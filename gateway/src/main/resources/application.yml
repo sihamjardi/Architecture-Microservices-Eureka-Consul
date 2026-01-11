@@ -1,13 +1,23 @@
-server:
-  port: 8888
-
 spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery: Gateway
   application:
     name: Gateway
-  cloud:
-    discovery:
-      enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3309/Micro_GatewayDB?createDatabaseIfNotExist=true
+    username: "root"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
-eureka:
-  instance:
-    hostname: localhost
+server:
+  port: 8088
+
